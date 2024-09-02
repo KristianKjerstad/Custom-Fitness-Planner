@@ -1,0 +1,9 @@
+# .air.toml
+[build]
+bin = "myapp"
+cmd = "go build -o ./myapp"
+# exclude 'vendor' folder if you're using Go modules
+exclude_dir = ["vendor"]
+
+[log]
+level = "debug"

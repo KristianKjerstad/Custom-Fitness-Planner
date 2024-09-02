@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+    backend:
+        build: ./backend
+        image: api
+        restart: unless-stopped
+        volumes:
+            - ./backend:/app
+        depends_on:
+            - db
+        ports:
+            - '8000:8000'
+
+    db:
+        image: postgres:16-alpine
+        ports:
+            - 5432:5432
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=development
+            - POSTGRES_USER=postgres
+            - POSTGRES_DB=dev_db
+volumes:
+    postgres_data:

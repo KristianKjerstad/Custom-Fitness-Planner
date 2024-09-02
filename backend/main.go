@@ -9,10 +9,12 @@ import (
 )
 
 func main() {
-	fmt.Println("Starting API")
+	fmt.Println("Starting API...")
 	router := mux.NewRouter()
 	router.HandleFunc("/", api.HomeHandler).Methods(http.MethodGet)
 	router.HandleFunc("/health", api.HealthCheckHandler).Methods(http.MethodGet)
 	router.Use(mux.CORSMethodMiddleware(router))
+
+	fmt.Println("API is ready!")
 	http.ListenAndServe(":8000", router)
 }
