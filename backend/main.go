@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/KristianKjerstad/AI-Workout-Planner/api"
+	"github.com/KristianKjerstad/AI-Workout-Planner/repositories"
 	"github.com/gorilla/mux"
 )
 
@@ -17,4 +18,6 @@ func main() {
 
 	fmt.Println("API is ready!")
 	http.ListenAndServe(":8000", router)
+
+	db, err := repositories.ConnectToDB()
 }

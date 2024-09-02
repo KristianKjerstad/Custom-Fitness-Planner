@@ -8,19 +8,41 @@ services:
         volumes:
             - ./backend:/app
         depends_on:
-            - db
+            - mongodb
         ports:
             - '8000:8000'
 
-    db:
-        image: postgres:16-alpine
-        ports:
-            - 5432:5432
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        restart: unless-stopped
         volumes:
-            - postgres_data:/var/lib/postgresql/data
+            # - ./mongodb/initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+            - mongodb-data:/data/db/
         environment:
-            - POSTGRES_PASSWORD=development
-            - POSTGRES_USER=postgres
-            - POSTGRES_DB=dev_db
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: password
+        ports:
+            - 27017:27017
+
+    mongo-express:
+        image: mongo-express:latest
+        container_name: mongo-express
+        restart: always
+        environment:
+            ME_CONFIG_MONGODB_ADMINUSERNAME: root
+            ME_CONFIG_MONGODB_ADMINPASSWORD: password
+            ME_CONFIG_MONGODB_PORT: 27017
+            # ME_CONFIG_MONGODB_SERVER: mongodb
+            ME_CONFIG_MONGODB_URL: mongodb://root:password@mongodb:27017/
+            ME_CONFIG_BASICAUTH_USERNAME: user
+            ME_CONFIG_BASICAUTH_PASSWORD: password
+        ports:
+            - 8081:8081
+        depends_on:
+            - mongodb
+
 volumes:
-    postgres_data:
+    mongodb-data:
+        driver: local
+        name: mongo-data
