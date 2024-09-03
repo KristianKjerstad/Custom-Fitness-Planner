@@ -9,6 +9,7 @@ import (
 
 	_ "github.com/lib/pq"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -124,4 +125,203 @@ func DeleteDocument(collection *mongo.Collection, filter interface{}) (*mongo.De
 
 	res, err := collection.DeleteMany(ctx, filter)
 	return res, err
+}
+
+func getGZCLPProgram() WorkoutProgram {
+	day1 := Workout{
+		Exercises: []Exercise{
+			{
+				Name:               "Squat",
+				Sets:               "3",
+				Reps:               "5+",
+				MuscleGroupsWorked: []MuscleGroup{Quads, Glutes},
+			},
+			{
+				Name:               "Bench Press",
+				Sets:               "3",
+				Reps:               "10",
+				MuscleGroupsWorked: []MuscleGroup{Chest, Triceps},
+			},
+			{
+				Name:               "Lat Pull Down",
+				Sets:               "3",
+				Reps:               "15+",
+				MuscleGroupsWorked: []MuscleGroup{Lats, Biceps},
+			},
+		},
+	}
+
+	day2 := Workout{
+		Exercises: []Exercise{
+			{
+				Name:               "Overhead Press",
+				Sets:               "3",
+				Reps:               "5+",
+				MuscleGroupsWorked: []MuscleGroup{Shoulders, Triceps},
+			},
+			{
+				Name:               "Deadlift",
+				Sets:               "3",
+				Reps:               "10",
+				MuscleGroupsWorked: []MuscleGroup{Back, Hamstrings},
+			},
+			{
+				Name:               "Dumbbell Row",
+				Sets:               "3",
+				Reps:               "15+",
+				MuscleGroupsWorked: []MuscleGroup{Lats, Biceps},
+			},
+		},
+	}
+
+	day3 := Workout{
+		Exercises: []Exercise{
+			{
+				Name:               "Deadlift",
+				Sets:               "3",
+				Reps:               "5",
+				MuscleGroupsWorked: []MuscleGroup{Hamstrings, Back},
+			},
+			{
+				Name:               "Deadlift",
+				Sets:               "3",
+				Reps:               "10",
+				MuscleGroupsWorked: []MuscleGroup{Back, Hamstrings},
+			},
+			{
+				Name:               "Dumbbell Row",
+				Sets:               "3",
+				Reps:               "15+",
+				MuscleGroupsWorked: []MuscleGroup{Lats, Biceps},
+			},
+		},
+	}
+
+	program := WorkoutProgram{
+		ID:               primitive.NewObjectID(),
+		ProgramName:      "GZCLP for Novice Lifters",
+		AuthorName:       "Cody Lefever",
+		FitnessLevel:     Beginner,
+		MainOutcome:      StrengthAndHypertrophy,
+		DaysPerWeek:      3,
+		LengthPerWorkout: "1 hour",
+		WorkoutSplitType: FullBody,
+		CreatedAt:        time.Now(),
+		UpdatedAt:        time.Now(),
+		WorkoutWeeks: []WorkoutWeek{
+			{
+				Workouts: []Workout{
+					day1,
+					day2,
+					day3,
+				},
+			},
+		},
+	}
+	return program
+}
+
+func getPHULProgram() WorkoutProgram {
+	// Define exercises for each workout
+	upperPowerExercises := []Exercise{
+		{"Barbell Bench Press", "", "3-4", "3-5", nil},
+		{"Incline Dumbbell Bench Press", "", "3-4", "6-10", nil},
+		{"Bent Over Row", "", "3-4", "3-5", nil},
+		{"Lat Pull Down", "", "3-4", "6-10", nil},
+		{"Overhead Press", "", "2-3", "5-8", nil},
+		{"Barbell Curl", "", "2-3", "6-10", nil},
+		{"Skullcrusher", "", "2-3", "6-10", nil},
+	}
+
+	lowerPowerExercises := []Exercise{
+		{"Squat", "", "3-4", "3-5", nil},
+		{"Deadlift", "", "3-4", "3-5", nil},
+		{"Leg Press", "", "3-5", "10-15", nil},
+		{"Leg Curl", "", "3-4", "6-10", nil},
+		{"Calf Exercise", "", "4", "6-10", nil},
+	}
+
+	upperHypertrophyExercises := []Exercise{
+		{"Incline Barbell Bench Press", "", "3-4", "8-12", nil},
+		{"Flat Bench Dumbbell Flye", "", "3-4", "8-12", nil},
+		{"Seated Cable Row", "", "3-4", "8-12", nil},
+		{"One Arm Dumbbell Row", "", "3-4", "8-12", nil},
+		{"Dumbbell Lateral Raise", "", "3-4", "8-12", nil},
+		{"Seated Incline Dumbbell Curl", "", "3-4", "8-12", nil},
+		{"Cable Tricep Extension", "", "3-4", "8-12", nil},
+	}
+
+	lowerHypertrophyExercises := []Exercise{
+		{"Front Squat", "", "3-4", "8-12", nil},
+		{"Barbell Lunge", "", "3-4", "8-12", nil},
+		{"Leg Extension", "", "3-4", "10-15", nil},
+		{"Leg Curl", "", "3-4", "10-15", nil},
+		{"Seated Calf Raise", "", "3-4", "8-12", nil},
+		{"Calf Press", "", "3-4", "8-12", nil},
+	}
+
+	// Define the workouts and weeks
+	phulProgram := WorkoutProgram{
+		ID:               primitive.NewObjectID(),
+		ProgramName:      "PHUL Program",
+		AuthorName:       "Brandon Campbell",
+		FitnessLevel:     Beginner,
+		MainOutcome:      StrengthAndHypertrophy,
+		DaysPerWeek:      4,
+		LengthPerWorkout: "50 - 70 minutes",
+		WorkoutSplitType: UpperLower,
+		CreatedAt:        time.Now(),
+		UpdatedAt:        time.Now(),
+		WorkoutWeeks: []WorkoutWeek{
+			{
+				Workouts: []Workout{
+					{Exercises: upperPowerExercises},
+					{Exercises: lowerPowerExercises},
+					{}, // Off Day
+					{Exercises: upperHypertrophyExercises},
+					{Exercises: lowerHypertrophyExercises},
+					{}, // Off Day
+					{}, // Off Day
+				},
+			},
+		},
+	}
+	return phulProgram
+}
+
+func AddDataExample() {
+
+	// Add the program to MongoDB using your AddWorkoutProgram function
+	client, err := ConnectToMongo()
+	if err != nil {
+		fmt.Println("Failed to connect to MongoDB:", err)
+		return
+	}
+	program1 := getGZCLPProgram()
+	program2 := getPHULProgram()
+	err = AddWorkoutProgram(client, program1)
+	if err != nil {
+		fmt.Println("Failed to add workout program:", err)
+	} else {
+		fmt.Println("Workout program added successfully!")
+	}
+	err = AddWorkoutProgram(client, program2)
+	if err != nil {
+		fmt.Println("Failed to add workout program:", err)
+	} else {
+		fmt.Println("Workout program added successfully!")
+	}
+}
+
+func AddWorkoutProgram(client *mongo.Client, program WorkoutProgram) error {
+	collection := client.Database("MainDB").Collection("programs")
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	_, err := collection.InsertOne(ctx, program)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

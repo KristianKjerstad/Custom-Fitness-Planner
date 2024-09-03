@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/KristianKjerstad/AI-Workout-Planner/api"
-	"github.com/KristianKjerstad/AI-Workout-Planner/repositories"
 	"github.com/gorilla/mux"
 )
 
@@ -17,8 +16,9 @@ func main() {
 	router.HandleFunc("/health", api.HealthCheckHandler).Methods(http.MethodGet)
 	router.Use(mux.CORSMethodMiddleware(router))
 
-	repositories.TestAddToDB()
-	fmt.Println("API is ready!")
-	http.ListenAndServe(":8000", router)
+	// repositories.AddDataExample()
+	// repositories.TestAddToDB()
+	// fmt.Println("API is ready!")
+	// http.ListenAndServe(":8000", router)
 
 }
