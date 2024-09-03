@@ -5,6 +5,8 @@ services:
         build: ./backend
         image: api
         restart: unless-stopped
+        env_file:
+            - backend.env
         volumes:
             - ./backend:/app
         depends_on:

@@ -1,40 +1,34 @@
 package repositories
 
 import (
-	"database/sql"
+	"context"
 	"fmt"
+	"os"
+	"time"
 
 	_ "github.com/lib/pq"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const (
-	host     = "localhost"
-	port     = 5432
-	user     = "postgres"
-	password = "development"
-	dbname   = "dev_db"
-)
-
-func ConnectToDB() (sql.DB, error) {
-	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
-		"password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbname)
-
-	db, err := sql.Open("postgres", psqlInfo)
+func ConnectToMongo() (*mongo.Client, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	host := os.Getenv("MONGO_HOST")
+	port := os.Getenv("MONGO_PORT")
+	username := os.Getenv("MONGO_USERNAME")
+	password := os.Getenv("MONGO_PASSWORD")
+	url := "mongodb://" + username + ":" + password + "@" + host + ":" + port
+	fmt.Println(url)
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI(url))
 	if err != nil {
-		return sql.DB{}, err
+		fmt.Println()
+		return nil, err
 	}
-	defer db.Close()
 
-	err = db.Ping()
-	if err != nil {
-		return sql.DB{}, err
-	}
-	fmt.Println("Successfully connected to DB!")
-	return sql.DB{}, nil
-
+	return client, nil
 }
 
-func SaveWorkoutPlans(workoutPlans []) {
+func testdb() {
 
 }
