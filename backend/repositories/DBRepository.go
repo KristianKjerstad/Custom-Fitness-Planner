@@ -92,21 +92,39 @@ func CreateDocument(collection *mongo.Collection, document interface{}) (*mongo.
 	return res, err
 }
 
-func ReadDocuments(collection *mongo.Collection, filter interface{}) ([]bson.M, error) {
+func ReadDocuments(collection *mongo.Collection, programNames []string, fitnessLevels []string, mainOutcomes []string, workoutSplits []string, daysPerWeek []int) ([]bson.M, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	cursor, err := collection.Find(ctx, filter)
+	filter := bson.D{}
+	// Add filters only if values are provided
+	if len(programNames) > 0 {
+		filter = append(filter, bson.E{Key: "program_name", Value: bson.D{{Key: "$in", Value: programNames}}})
+	}
+	if len(fitnessLevels) > 0 {
+		filter = append(filter, bson.E{Key: "fitness_level", Value: bson.D{{Key: "$in", Value: fitnessLevels}}})
+	}
+	if len(mainOutcomes) > 0 {
+		filter = append(filter, bson.E{Key: "main_outcome", Value: bson.D{{Key: "$in", Value: mainOutcomes}}})
+	}
+	if len(workoutSplits) > 0 {
+		filter = append(filter, bson.E{Key: "workout_split_type", Value: bson.D{{Key: "$in", Value: workoutSplits}}})
+	}
+	if len(daysPerWeek) > 0 {
+		filter = append(filter, bson.E{Key: "days_per_week", Value: bson.D{{Key: "$in", Value: daysPerWeek}}})
+	}
+
+	fmt.Println(filter)
+
+	cursor, err := collection.Find(ctx, filter, options.Find())
 	if err != nil {
 		return nil, err
 	}
 	defer cursor.Close(ctx)
-
 	var results []bson.M
 	if err := cursor.All(ctx, &results); err != nil {
 		return nil, err
 	}
-
 	return results, nil
 
 }
