@@ -57,7 +57,7 @@ func TestAddToDB() {
 
 	// 2. Read Documents
 	filter := bson.D{{"age", bson.D{{"$gte", 25}}}}
-	results, err := ReadDocuments(collection, filter)
+	results, err := ReadDocuments(collection, []string{}, []string{}, []string{}, []string{}, []int{})
 	if err != nil {
 		log.Fatal("ERROR! Could not read documents:", err)
 	}
@@ -124,6 +124,11 @@ func ReadDocuments(collection *mongo.Collection, programNames []string, fitnessL
 	var results []bson.M
 	if err := cursor.All(ctx, &results); err != nil {
 		return nil, err
+	}
+
+	// Ensure that result is initialized to an empty slice if it's nil
+	if results == nil {
+		results = []bson.M{} // Replace Document with the actual type of your data
 	}
 	return results, nil
 

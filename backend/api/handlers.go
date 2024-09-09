@@ -46,6 +46,8 @@ func WorkoutsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	collection := client.Database("MainDB").Collection("programs")
 	result, err := repositories.ReadDocuments(collection, programNames, fitnessLevels, mainOutcomes, workoutSplits, daysPerWeek)
+	fmt.Println("*******************")
+	fmt.Println(result)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
