@@ -1,13 +1,13 @@
 package api
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"strings"
 
-	"github.com/KristianKjerstad/AI-Workout-Planner/repositories"
+	"github.com/KristianKjerstad/AI-Workout-Planner/useCases"
+	"github.com/KristianKjerstad/AI-Workout-Planner/utils"
 )
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
@@ -25,7 +25,6 @@ func WorkoutsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	programNames := r.URL.Query()["programNames"]
-	fmt.Println("programNames %v", programNames)
 	fitnessLevels := r.URL.Query()["fitnessLevels"]
 	mainOutcomes := r.URL.Query()["mainOutcomes"]
 	workoutSplits := r.URL.Query()["workoutSplits"]
@@ -39,27 +38,13 @@ func WorkoutsHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	client, err := repositories.ConnectToMongo()
+	workouts, err := useCases.GetWorkoutsUseCase(programNames, fitnessLevels, mainOutcomes, workoutSplits, daysPerWeek)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	collection := client.Database("MainDB").Collection("programs")
-	result, err := repositories.ReadDocuments(collection, programNames, fitnessLevels, mainOutcomes, workoutSplits, daysPerWeek)
-	fmt.Println("*******************")
-	fmt.Println(result)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		utils.WriteAPIError(w, http.StatusInternalServerError, "Could not get workouts")
 		return
 	}
 
-	jsonData, err := json.Marshal(result)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	w.Write(jsonData)
+	w.Write(workouts)
 }
 
 func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
