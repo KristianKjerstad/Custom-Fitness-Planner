@@ -102,8 +102,8 @@ export function Component() {
                     Customize Your Workout
                   </h2>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Tell us about your fitness goals, experience level, and preferences, and we will create a personalized
-                    workout plan just for you.
+                    Tell us about your fitness goals, experience level, and preferences, and we will find the
+                    workout plan that fits best for you.
                   </p>
                 </div>
                 <form className="grid gap-4">
@@ -220,6 +220,19 @@ export function Component() {
                       <p className="text-muted-foreground">Registered Dietitian</p>
                     </div>
                   </div>
+                  <div className="flex items-center gap-4">
+                    <Avatar>
+                      <AvatarImage src="/placeholder-user.jpg" alt="Jane Smith" />
+                      <AvatarFallback>JS</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <h3 className="text-xl font-bold">x x</h3>
+                      <p className="text-muted-foreground">cool guy</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p> And more!</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -235,7 +248,7 @@ export function Component() {
                 </p>
               </div>
               <div className="grid max-w-5xl gap-6 lg:grid-cols-2 lg:gap-12">
-                <Card className="p-6 shadow-sm">
+                <Card className="p-6 shadow-sm max-w-[450px]">
                   <CardContent>
                     <blockquote className="text-lg font-semibold leading-snug">
                       &apos;&apos;I&apos;ve been using CustomWorkoutPlans for the past 6 months  and it&apos;s completely transformed my
@@ -253,7 +266,7 @@ export function Component() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="p-6 shadow-sm">
+                <Card className="p-6 shadow-sm max-w-[450px]">
                   <CardContent>
                     <blockquote className="text-lg font-semibold leading-snug">
                       &apos;&apos;As someone who has struggled with consistency in the past, Custom Workout Plans has been a
