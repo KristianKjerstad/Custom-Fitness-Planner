@@ -17,7 +17,11 @@ const fontBody = Manrope({
   variable: '--font-body',
 })
 
-export default function Layout({ children }) {
+type Props = {
+  children: string | JSX.Element | JSX.Element[]
+}
+
+export default function Layout({ children }: Props) {
   return (
     <html lang="en">
       <Analytics />

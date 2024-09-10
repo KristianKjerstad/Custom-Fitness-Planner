@@ -102,7 +102,7 @@ export function Component() {
                     Customize Your Workout
                   </h2>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Tell us about your fitness goals, experience level, and preferences, and we'll create a personalized
+                    Tell us about your fitness goals, experience level, and preferences, and we will create a personalized
                     workout plan just for you.
                   </p>
                 </div>
@@ -238,8 +238,8 @@ export function Component() {
                 <Card className="p-6 shadow-sm">
                   <CardContent>
                     <blockquote className="text-lg font-semibold leading-snug">
-                      "I've been using CustomWorkoutPlans for the past 6 months  and it's completely transformed my
-                      fitness. The workouts are challenging but effective, and I've seen amazing  results."
+                      &apos;&apos;I&apos;ve been using CustomWorkoutPlans for the past 6 months  and it&apos;s completely transformed my
+                      fitness. The workouts are challenging but effective, and I&apos;ve seen amazing  results.&apos;&apos;
                     </blockquote>
                     <div className="mt-4 flex items-center gap-2">
                       <Avatar>
@@ -256,10 +256,10 @@ export function Component() {
                 <Card className="p-6 shadow-sm">
                   <CardContent>
                     <blockquote className="text-lg font-semibold leading-snug">
-                      "As someone who has struggled with consistency in the past, Custom Workout Plans has been a
-                      game-changer. The app makes it so easy to stick to my routine and see real progress."
+                      &apos;&apos;As someone who has struggled with consistency in the past, Custom Workout Plans has been a
+                      game-changer. The app makes it so easy to stick to my routine and see real progress.&apos;&apos;
                     </blockquote>
-                    <div className="">
+                    <div className="mt-4 flex items-center gap-2">
                       <Avatar>
                         <AvatarImage src="/placeholder-user.jpg" alt="Michael Lee" />
                         <AvatarFallback>ML</AvatarFallback>
@@ -299,7 +299,7 @@ export function Component() {
   )
 }
 
-function DumbbellIcon(props) {
+function DumbbellIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -323,7 +323,7 @@ function DumbbellIcon(props) {
 }
 
 
-function MenuIcon(props) {
+function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
