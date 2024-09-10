@@ -26,7 +26,6 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Card, CardContent } from "@/components/ui/card"
-import Image from "next/image"
 
 export function Component() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -41,13 +40,13 @@ export function Component() {
           <Link href="#" className="hover:underline" prefetch={false}>
             Home
           </Link>
-          <Link href="#" className="hover:underline" prefetch={false}>
+          <Link href="/about" className="hover:underline" prefetch={false}>
             About
           </Link>
-          <Link href="#" className="hover:underline" prefetch={false}>
+          <Link href="/workouts" className="hover:underline" prefetch={false}>
             Workouts
           </Link>
-          <Link href="#" className="hover:underline" prefetch={false}>
+          <Link href="/contact" className="hover:underline" prefetch={false}>
             Contact
           </Link>
         </nav>
@@ -57,7 +56,9 @@ export function Component() {
             <span className="sr-only">Toggle menu</span>
           </Button>
         </div>
-        <Button variant="outline">Get Started</Button>
+        <Link href="#customize-workout">
+          <Button variant="outline">Get Started</Button>
+        </Link>
       </header>
       <main className="flex-1">
         <section className="bg-primary py-12 md:py-24 lg:py-32">
@@ -74,8 +75,8 @@ export function Component() {
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Link
-                    href="#"
-                    className="inline-flex h-10 items-center justify-center rounded-md bg-primary-foreground px-8 text-sm font-medium text-primary shadow transition-colors hover:bg-primary-foreground/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    href="#customize-workout"
+                    className="inline-flex h-10 items-center justify-center rounded-md bg-primary-foreground px-8 text-sm font-medium text-primary shadow transition-colors hover:bg-primary-foreground/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 mb-8"
                     prefetch={false}
                   >
                     Get Started
@@ -92,7 +93,7 @@ export function Component() {
             </div>
           </div>
         </section>
-        <section className="bg-muted py-12 md:py-24 lg:py-32">
+        <section className="bg-muted py-12 md:py-24 lg:py-32" id="customize-workout">
           <div className="container px-8 md:px-10">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
               <div className="flex flex-col justify-center space-y-4">
@@ -164,7 +165,7 @@ export function Component() {
                       </SelectContent>
                     </Select>
                   </div>
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full mb-8 mt-4">
                     Get My Workout Plan
                   </Button>
                 </form>
@@ -282,14 +283,14 @@ export function Component() {
             <span className="text-xl font-bold">Custom Workout Plans</span>
           </div>
           <nav className="flex gap-4 sm:gap-6">
-            <Link href="#" className="hover:underline" prefetch={false}>
+            <Link href="/terms-of-service" className="hover:underline" prefetch={false}>
               Terms of Service
             </Link>
-            <Link href="#" className="hover:underline" prefetch={false}>
+            <Link href="/privacy-policy" className="hover:underline" prefetch={false}>
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:underline" prefetch={false}>
-              Contact Us
+            <Link href="/contact" className="hover:underline" prefetch={false}>
+              Contact
             </Link>
           </nav>
         </div>
