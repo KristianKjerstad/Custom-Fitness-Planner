@@ -1,6 +1,22 @@
 version: '3.8'
 
 services:
+
+    frontend:
+        build: ./workout-planner-frontend  
+        image: frontend
+        restart: unless-stopped
+        # env_file:
+        #   - frontend.env
+        volumes:
+            - ./workout-planner-frontend:/app
+        depends_on:
+            - backend  # Optional, if your frontend depends on the backend API
+        ports:
+            - '3000:3000'  # Port for the Next.js app
+        # environment:
+        #   - NODE_ENV=development
+
     backend:
         build: ./backend
         image: api
