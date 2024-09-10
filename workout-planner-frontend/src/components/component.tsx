@@ -26,40 +26,13 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Card, CardContent } from "@/components/ui/card"
+import { Header } from "./Header"
+import Footer from "./Footer"
 
 export function Component() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <header className="bg-primary text-primary-foreground py-4 px-6 flex items-center justify-between">
-        <Link href="#" className="flex items-center gap-2" prefetch={false}>
-          <DumbbellIcon className="h-6 w-6" />
-          <span className="text-xl font-bold">Custom Workout Plans</span>
-        </Link>
-        <nav className={`flex items-center gap-6 ${isMenuOpen ? "flex" : "hidden"} md:flex`}>
-          <Link href="#" className="hover:underline" prefetch={false}>
-            Home
-          </Link>
-          <Link href="/about" className="hover:underline" prefetch={false}>
-            About
-          </Link>
-          <Link href="/workouts" className="hover:underline" prefetch={false}>
-            Workouts
-          </Link>
-          <Link href="/contact" className="hover:underline" prefetch={false}>
-            Contact
-          </Link>
-        </nav>
-        <div className="md:hidden">
-          <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <MenuIcon className="h-6 w-6" />
-            <span className="sr-only">Toggle menu</span>
-          </Button>
-        </div>
-        <Link href="#customize-workout">
-          <Button variant="outline">Get Started</Button>
-        </Link>
-      </header>
+      <Header />
       <main className="flex-1">
         <section className="bg-primary py-12 md:py-24 lg:py-32">
           <div className="container px-8 md:px-10">
@@ -289,25 +262,7 @@ export function Component() {
           </div>
         </section>
       </main>
-      <footer className="bg-primary text-primary-foreground py-6 w-full shrink-0">
-        <div className="container flex flex-col gap-4 items-center justify-between px-4 md:px-6 md:flex-row">
-          <div className="flex items-center gap-2">
-            <DumbbellIcon className="h-6 w-6" />
-            <span className="text-xl font-bold">Custom Workout Plans</span>
-          </div>
-          <nav className="flex gap-4 sm:gap-6">
-            <Link href="/terms-of-service" className="hover:underline" prefetch={false}>
-              Terms of Service
-            </Link>
-            <Link href="/privacy-policy" className="hover:underline" prefetch={false}>
-              Privacy Policy
-            </Link>
-            <Link href="/contact" className="hover:underline" prefetch={false}>
-              Contact
-            </Link>
-          </nav>
-        </div>
-      </footer>
+      <Footer />
     </div >
   )
 }
