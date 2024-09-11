@@ -165,7 +165,7 @@ export function Component() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h2 className="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl">
-                    Trusted by Fitness Experts
+                    Plans designed by Fitness Experts
                   </h2>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
                     Our workout plans are designed by experienced fitness professionals to help you achieve your goals.
@@ -174,32 +174,32 @@ export function Component() {
                 <div className="grid gap-6">
                   <div className="flex items-center gap-4">
                     <Avatar>
-                      <AvatarImage src="/placeholder-user.jpg" alt="John Doe" />
-                      <AvatarFallback>JD</AvatarFallback>
+                      <AvatarImage src="/placeholder-user.jpg" alt="Cody Lefever" />
+                      <AvatarFallback>CL</AvatarFallback>
                     </Avatar>
                     <div>
-                      <h3 className="text-xl font-bold">John Doe</h3>
-                      <p className="text-muted-foreground">Certified Personal Trainer</p>
+                      <h3 className="text-xl font-bold">Cody Lefever</h3>
+                      <p className="text-muted-foreground">World Championship caliber lifter and coach</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
                     <Avatar>
-                      <AvatarImage src="/placeholder-user.jpg" alt="Jane Smith" />
-                      <AvatarFallback>JS</AvatarFallback>
+                      <AvatarImage src="/placeholder-user.jpg" alt="Brandon Campbell" />
+                      <AvatarFallback>BC</AvatarFallback>
                     </Avatar>
                     <div>
-                      <h3 className="text-xl font-bold">Jane Smith</h3>
-                      <p className="text-muted-foreground">Registered Dietitian</p>
+                      <h3 className="text-xl font-bold">Brandon Campbell</h3>
+                      <p className="text-muted-foreground">Personal trainer and YouTube personality</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
                     <Avatar>
-                      <AvatarImage src="/placeholder-user.jpg" alt="Jane Smith" />
-                      <AvatarFallback>JS</AvatarFallback>
+                      <AvatarImage src="/placeholder-user.jpg" alt="Mark Rippetoe" />
+                      <AvatarFallback>MR</AvatarFallback>
                     </Avatar>
                     <div>
-                      <h3 className="text-xl font-bold">x x</h3>
-                      <p className="text-muted-foreground">cool guy</p>
+                      <h3 className="text-xl font-bold">Mark Rippetoe</h3>
+                      <p className="text-muted-foreground">Fitness Coach and former powerlifter</p>
                     </div>
                   </div>
                   <div>

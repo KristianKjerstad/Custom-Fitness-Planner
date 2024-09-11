@@ -61,7 +61,7 @@ const Contact = () => {
                             required
                         />
                     </div>
-                    <div>
+                    <div className="pb-8">
                         <Label htmlFor="message">Message</Label>
                         <Textarea
                             id="message"
@@ -72,7 +72,8 @@ const Contact = () => {
                             required
                         />
                     </div>
-                    <Button type="submit">Send Message</Button>
+                    <Button disabled type="submit" >Send Message</Button>
+                    <p>(Unfortunately we are not able to receive any messages right now)</p>
                 </div>
             </form>
         </div>
