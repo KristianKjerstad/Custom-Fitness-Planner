@@ -18,8 +18,6 @@ To read more about using these font, please visit the Next.js documentation:
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
 "use client"
-
-import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
@@ -138,6 +136,7 @@ export function Component() {
                       </SelectContent>
                     </Select>
                   </div>
+                  <p className="prose text-muted-foreground">(When using this service you agree to our <Link href="/terms-of-service" className="hover:underline">Terms of Service</Link>)</p>
                   <Button type="submit" className="w-full mb-8 mt-4">
                     Get My Workout Plan
                   </Button>
@@ -224,7 +223,7 @@ export function Component() {
                 <Card className="p-6 shadow-sm max-w-[450px]">
                   <CardContent>
                     <blockquote className="text-lg font-semibold leading-snug">
-                      &apos;&apos;I&apos;ve been using CustomWorkoutPlans for the past 6 months  and it&apos;s completely transformed my
+                      &apos;&apos;I&apos;ve been using Custom Workout Plans for the past 6 months  and it&apos;s completely transformed my
                       fitness. The workouts are challenging but effective, and I&apos;ve seen amazing  results.&apos;&apos;
                     </blockquote>
                     <div className="mt-4 flex items-center gap-2">
@@ -267,47 +266,4 @@ export function Component() {
   )
 }
 
-function DumbbellIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M14.4 14.4 9.6 9.6" />
-      <path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z" />
-      <path d="m21.5 21.5-1.4-1.4" />
-      <path d="M3.9 3.9 2.5 2.5" />
-      <path d="M6.404 12.768a2 2 0 1 1-2.829-2.829l1.768-1.767a2 2 0 1 1-2.828-2.829l2.828-2.828a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829z" />
-    </svg>
-  )
-}
 
-
-function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <line x1="4" x2="20" y1="12" y2="12" />
-      <line x1="4" x2="20" y1="6" y2="6" />
-      <line x1="4" x2="20" y1="18" y2="18" />
-    </svg>
-  )
-}

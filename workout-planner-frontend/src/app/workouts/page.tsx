@@ -98,7 +98,7 @@ const Workouts = () => {
                                 Browse our library of custom workout plans to find the perfect fit for your fitness goals.
                             </p>
                         </div>
-                        <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                        <div className="flex flex-col gap-4 sm:flex-row sm:items-center pb-8">
                             <Input
                                 type="text"
                                 placeholder="Search workouts..."
@@ -304,7 +304,7 @@ const Workouts = () => {
                             ))}
                         </div>
                         {filteredWorkouts.length > 4 && (
-                            <div className="flex justify-center mt-6">
+                            <div className="flex justify-center mt-6 pt-8">
                                 <Button onClick={() => setShowMoreWorkouts(!showMoreWorkouts)} className="w-full max-w-md">
                                     {showMoreWorkouts ? "Show Less" : "Load More"}
                                 </Button>
