@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import './globals.css'
 import { Analytics } from "@vercel/analytics/react"
 import Footer from '@/components/Footer'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const fontHeading = Manrope({
   subsets: ['latin'],
@@ -73,7 +73,6 @@ export default function Layout({ children }: Props) {
         >
           {children}
         </body>
-        {/* <p>{footerHeight}</p> */}
         <Footer setFooterHeight={handleSetHeight} />
       </div>
     </html>

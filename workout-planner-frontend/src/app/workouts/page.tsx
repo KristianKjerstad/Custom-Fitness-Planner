@@ -1,5 +1,4 @@
 "use client"
-import Footer from "@/components/Footer"
 import { Header } from "@/components/Header"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
@@ -123,7 +122,7 @@ const Workouts = () => {
                                                             onCheckedChange={(e) => {
                                                                 setFilters((prev) => ({
                                                                     ...prev,
-                                                                    difficulty: e.target.checked
+                                                                    difficulty: e
                                                                         ? [...prev.difficulty, "beginner"]
                                                                         : prev.difficulty.filter((d) => d !== "beginner"),
                                                                 }))
@@ -137,7 +136,7 @@ const Workouts = () => {
                                                             onCheckedChange={(e) => {
                                                                 setFilters((prev) => ({
                                                                     ...prev,
-                                                                    difficulty: e.target.checked
+                                                                    difficulty: e
                                                                         ? [...prev.difficulty, "intermediate"]
                                                                         : prev.difficulty.filter((d) => d !== "intermediate"),
                                                                 }))
@@ -151,7 +150,7 @@ const Workouts = () => {
                                                             onCheckedChange={(e) => {
                                                                 setFilters((prev) => ({
                                                                     ...prev,
-                                                                    difficulty: e.target.checked
+                                                                    difficulty: e
                                                                         ? [...prev.difficulty, "advanced"]
                                                                         : prev.difficulty.filter((d) => d !== "advanced"),
                                                                 }))
@@ -170,7 +169,7 @@ const Workouts = () => {
                                                             onCheckedChange={(e) => {
                                                                 setFilters((prev) => ({
                                                                     ...prev,
-                                                                    equipment: e.target.checked
+                                                                    equipment: e
                                                                         ? [...prev.equipment, "dumbbells"]
                                                                         : prev.equipment.filter((e) => e !== "dumbbells"),
                                                                 }))
@@ -184,7 +183,7 @@ const Workouts = () => {
                                                             onCheckedChange={(e) => {
                                                                 setFilters((prev) => ({
                                                                     ...prev,
-                                                                    equipment: e.target.checked
+                                                                    equipment: e
                                                                         ? [...prev.equipment, "barbell"]
                                                                         : prev.equipment.filter((e) => e !== "barbell"),
                                                                 }))
@@ -198,7 +197,7 @@ const Workouts = () => {
                                                             onCheckedChange={(e) => {
                                                                 setFilters((prev) => ({
                                                                     ...prev,
-                                                                    equipment: e.target.checked
+                                                                    equipment: e
                                                                         ? [...prev.equipment, "bodyweight"]
                                                                         : prev.equipment.filter((e) => e !== "bodyweight"),
                                                                 }))
@@ -212,7 +211,7 @@ const Workouts = () => {
                                                             onCheckedChange={(e) => {
                                                                 setFilters((prev) => ({
                                                                     ...prev,
-                                                                    equipment: e.target.checked
+                                                                    equipment: e
                                                                         ? [...prev.equipment, "yoga mat"]
                                                                         : prev.equipment.filter((e) => e !== "yoga mat"),
                                                                 }))
@@ -231,7 +230,7 @@ const Workouts = () => {
                                                             onCheckedChange={(e) => {
                                                                 setFilters((prev) => ({
                                                                     ...prev,
-                                                                    duration: e.target.checked
+                                                                    duration: e
                                                                         ? [...prev.duration, "30 minutes"]
                                                                         : prev.duration.filter((d) => d !== "30 minutes"),
                                                                 }))
@@ -245,7 +244,7 @@ const Workouts = () => {
                                                             onCheckedChange={(e) => {
                                                                 setFilters((prev) => ({
                                                                     ...prev,
-                                                                    duration: e.target.checked
+                                                                    duration: e
                                                                         ? [...prev.duration, "45 minutes"]
                                                                         : prev.duration.filter((d) => d !== "45 minutes"),
                                                                 }))
@@ -259,7 +258,7 @@ const Workouts = () => {
                                                             onCheckedChange={(e) => {
                                                                 setFilters((prev) => ({
                                                                     ...prev,
-                                                                    duration: e.target.checked
+                                                                    duration: e
                                                                         ? [...prev.duration, "60 minutes"]
                                                                         : prev.duration.filter((d) => d !== "60 minutes"),
                                                                 }))

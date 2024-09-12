@@ -1,5 +1,4 @@
 "use client"
-import Footer from "@/components/Footer"
 import { Header } from "@/components/Header"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 

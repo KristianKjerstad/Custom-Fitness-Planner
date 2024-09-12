@@ -1,7 +1,7 @@
 "use client"
 import { DumbbellIcon } from "lucide-react"
 import Link from "next/link"
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 
 type FooterProps = {

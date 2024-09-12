@@ -25,7 +25,6 @@ import { Input } from "@/components/ui/input"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Card, CardContent } from "@/components/ui/card"
 import { Header } from "./Header"
-import Footer from "./Footer"
 
 export function Component() {
   return (

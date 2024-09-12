@@ -3,11 +3,9 @@
 import { DumbbellIcon, MenuIcon } from "lucide-react"
 import Link from "next/link"
 import { Button } from "./ui/button"
-import { useState } from "react"
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"
 
 export const Header = () => {
-    // const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
         <header className="bg-primary text-primary-foreground py-4 px-6 flex items-center justify-between">
@@ -29,15 +27,6 @@ export const Header = () => {
                     Contact
                 </Link>
             </nav>
-            {/* <div className="md:hidden">
-                <Button variant="ghost" size="icon" onClick={() => { }}>
-                    <MenuIcon className="h-6 w-6" />
-                    <span className="sr-only">Toggle menu</span>
-                </Button>
-            </div> */}
-            {/* <Link href="/#customize-workout">
-                <Button variant="outline">Get Started</Button>
-            </Link> */}
             <div>
                 <Sheet>
                     <SheetTrigger asChild>
