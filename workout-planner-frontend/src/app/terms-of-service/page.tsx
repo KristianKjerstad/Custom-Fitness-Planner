@@ -75,7 +75,6 @@ const TermsOfService = () => {
                     </div>
                 </div>
             </section>
-            <Footer />
         </div>
     )
 }

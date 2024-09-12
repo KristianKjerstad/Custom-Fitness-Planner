@@ -35,7 +35,7 @@ const Contact = () => {
 
     return <div>
         <Header />
-        <div className="pl-12 pt-12 md:pt-24 lg:pt-32">
+        <div className="pl-12 pt-12 md:pt-24 lg:pt-32 pr-8">
             <h3 className="text-2xl font-bold mb-4">Send Us a Message</h3>
             <form onSubmit={handleContactFormSubmit}>
                 <div className="space-y-4 max-w-[800px]">
@@ -78,7 +78,6 @@ const Contact = () => {
             </form>
         </div>
         <div className="pb-40"></div>
-        <Footer />
     </div >
 }
 

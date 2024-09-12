@@ -261,7 +261,6 @@ export function Component() {
           </div>
         </section>
       </main>
-      <Footer />
     </div >
   )
 }

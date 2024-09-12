@@ -98,7 +98,7 @@ const Workouts = () => {
                                 Browse our library of custom workout plans to find the perfect fit for your fitness goals.
                             </p>
                         </div>
-                        <div className="flex flex-col gap-4 sm:flex-row sm:items-center pb-8">
+                        <div className="flex flex-col gap-8 sm:flex-row sm:items-center pb-8 max-w-[1400px]">
                             <Input
                                 type="text"
                                 placeholder="Search workouts..."
@@ -106,7 +106,7 @@ const Workouts = () => {
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="flex-1"
                             />
-                            <Accordion type="single" collapsible>
+                            <Accordion type="single" collapsible >
                                 <AccordionItem value="filters">
                                     <AccordionTrigger className="flex items-center gap-2">
                                         <FilterIcon className="h-5 w-5" />
@@ -276,7 +276,7 @@ const Workouts = () => {
                         </div>
                         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                             {filteredWorkouts.slice(0, showMoreWorkouts ? filteredWorkouts.length : 4).map((workout) => (
-                                <Card key={workout.id} className="bg-background p-4 shadow-sm">
+                                <Card key={workout.id} className="bg-background p-4 shadow-xl">
                                     <img
                                         src="/placeholder.svg"
                                         alt={workout.name}
@@ -313,7 +313,6 @@ const Workouts = () => {
                     </div>
                 </div>
             </section>
-            <Footer />
         </div>
     )
 }
