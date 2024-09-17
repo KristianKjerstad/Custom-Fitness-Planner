@@ -12,14 +12,15 @@ const Footer = (props: FooterProps) => {
     const { setFooterHeight } = props
     const componentRef = useRef(null);
 
-    // Function to update the height
-    const updateHeight = () => {
-        if (componentRef.current) {
-            setFooterHeight(componentRef.current.offsetHeight);
-        }
-    };
 
     useEffect(() => {
+        // Function to update the height
+        const updateHeight = () => {
+            if (componentRef.current) {
+                //@ts-expect-error type not working
+                setFooterHeight(componentRef.current.offsetHeight);
+            }
+        };
         // Set initial height
         updateHeight();
 
@@ -30,7 +31,7 @@ const Footer = (props: FooterProps) => {
         return () => {
             window.removeEventListener('resize', updateHeight);
         };
-    }, []);
+    }, [setFooterHeight]);
 
 
 

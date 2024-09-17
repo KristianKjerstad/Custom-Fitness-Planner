@@ -23,12 +23,14 @@ const fontBody = Manrope({
 type Props = {
   children: string | JSX.Element | JSX.Element[]
 }
+
+// Function to safely get window dimensions on client-side
 function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
+  if (typeof window !== 'undefined') {
+    const { innerWidth: width, innerHeight: height } = window;
+    return { width, height };
+  }
+  return { width: 0, height: 0 }; // Default for server-side
 }
 
 function useWindowDimensions() {
@@ -57,24 +59,27 @@ export default function Layout({ children }: Props) {
 
   const bodyHeight = windowHeight - componentHeight
 
-  console.log(bodyHeight)
 
   return (
     <html lang="en">
       <Analytics />
-      <div className='flex flex-col'>
-        <body
-          style={{ minHeight: `${bodyHeight}px` }}
-          className={cn(
-            `antialiased flex-grow`,
-            fontHeading.variable,
-            fontBody.variable
-          )}
-        >
-          {children}
-        </body>
-        <Footer setFooterHeight={handleSetHeight} />
-      </div>
+      <body
+
+        className={cn(
+          `antialiased flex-grow`,
+          fontHeading.variable,
+          fontBody.variable
+        )}
+      >
+        <div className='flex flex-col'>
+          <div style={{ minHeight: `${bodyHeight}px`, paddingBottom: "48px" }}>
+
+            {children}
+          </div>
+          <Footer setFooterHeight={handleSetHeight} />
+        </div>
+      </body>
+
     </html>
   )
 }
